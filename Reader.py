@@ -1,8 +1,6 @@
-import matplotlib.pyplot as plt
 import os
-import pandas as pd
 import numpy as np
-import time
+
 
 
 class Reader:
@@ -51,8 +49,3 @@ class Reader:
 
 
 
-p = Reader()
-a =p.read_file_time('time.txt')
-b = p.read_file_int('int.txt')
-print(a)
-print(b)
