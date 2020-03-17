@@ -32,13 +32,16 @@ class Reader:
             except Exception as e:
                 print(str(e))
 
-                split_data = text.split()
+            split_data = text.split()
 
-                for i in range(len(split_data)):
-                    if int(split_data[i]) < self.max_call_time:
-                        self.data_frame_time.append(int(split_data[i]))
+            for i in range(len(split_data)):
+                if int(split_data[i]) < self.max_call_time:
+                    self.data_frame_time.append(int(split_data[i]))
 
             self.data_frame_time = np.array(self.data_frame_time).reshape(-1, 1)
             return self.data_frame_time
 
 
+r = Reader()
+p = r.read_file_time('time.txt')
+print(p)
