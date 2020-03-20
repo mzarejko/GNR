@@ -1,0 +1,3 @@
+Sprawdzić czy wykres jest prawidłowy?
+Czy zabezpieczać kod przed wyjątkami(unit test)?
+Co jest głownie oceniane( czy kod jest tylko pomocą w obliczeniach)
