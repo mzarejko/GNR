@@ -48,6 +48,7 @@ class Data:
         plt.xlabel('time')
         plt.show()
 
+
         return
 
 

@@ -1,3 +1,4 @@
 Sprawdzić czy wykres jest prawidłowy?
-Czy zabezpieczać kod przed wyjątkami(unit test)?
-Co jest głownie oceniane( czy kod jest tylko pomocą w obliczeniach)
+Czy zabezpieczać kod przed wyjątkami? (unit test)
+Co jest głownie oceniane? ( czy kod jest tylko pomocą w obliczeniach)
+Jakie jednostki w pliku time? (sekundy,minuty,ms)
