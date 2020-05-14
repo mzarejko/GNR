@@ -2,3 +2,6 @@ Sprawdzić czy wykres jest prawidłowy?
 Czy zabezpieczać kod przed wyjątkami? (unit test)
 Co jest głownie oceniane? ( czy kod jest tylko pomocą w obliczeniach)
 Jakie jednostki w pliku time? (sekundy,minuty,ms)
+    Z prezentacji wynika, że są to połączenio minuty lub połączenio godziny i nasz ywnik to 13.40 połączenio-minut
+Czy to co policzyliśmy to natężenie ruchu czy wywołań?
+    Nie rozumiem o co nam chodzi w tym pytaniu xD
