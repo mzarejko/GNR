@@ -1,6 +1,7 @@
 from Reader import Reader
+import warnings
+warnings.filterwarnings("ignore", "(?s).*MATPLOTLIBDATA.*", category=UserWarning)
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 class Data:
@@ -46,10 +47,9 @@ class Data:
         plt.title('plot')
         plt.ylabel('traffic intensity')
         plt.xlabel('time')
-        plt.show()
 
 
-        return
+        return plt
 
 
     def calculate_busy_hour(self, schedule_call):
