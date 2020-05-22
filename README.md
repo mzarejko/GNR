@@ -13,7 +13,7 @@ Zadaniem programu jest policzenie średniej wartości natężenia ruchu korzysta
 
 ### Opis kodu
 
-W pliku Main.py mamy zawarty poniższy kod, który wywołuje konstruktor klasy Data, następnie deleguje go do wyliczenia średniej wartości natężenia ruchu dla poszczegulnych minut. Posiadając wyliczony przebieg rozpoczyna się proces liczenia GNR oraz rysowania wykresu.
+W pliku Main.py mamy zawarty poniższy kod, który wywołuje konstruktor klasy Data i dokonuje poniższych operacji. 
 
 ```python
 d = Data()
@@ -25,5 +25,57 @@ d = Data()
     plt.show()
 ```
 
+Obiekt klasy Data odczytuje za pomocą obiektu klasy Reader 2 pliki tekstowe "int.txt", "time.txt" oraz wylicza średnią arytmetyczą z wartości "time.txt".
 
+```python
+ reader = Reader()
+        self.__data_frame_int = reader.read_file_int("int.txt")
+        self.__data_frame_time = reader.read_file_time("time.txt")
+        self.__average_duration = self.calculate_average_duration(self.__data_frame_time)
+```
+
+  Następnie deleguje wartosć `d` do wyliczenia średniej wartości natężenia ruchu dla poszczegulnych minut na podstawie przedstawionego wcześniej wzoru. 
   
+  ```python
+   def calculate_traffic_intensity(self):
+        # function for creating distribution of traffic intensity
+        av_call_time = float(self.calculate_average_duration(self.__data_frame_time))
+        distribution_call = []
+        for i in self.__data_frame_int:
+            distribution_call.append(i[1] * av_call_time)
+
+        return distribution_call
+  ```
+Posiadając wyliczony przebieg rozpoczęto liczenie GNR.
+
+```python
+
+  def calculate_busy_hour(self, schedule_call):
+        # for every min function calculate sum of traffic distribution from 1 h
+        hour_array = {}
+        for i in range(self.__data_frame_int.shape[0]):
+            if self.__data_frame_int[i][0] + 60 > self.__data_frame_int[-1][0]:  # kończy pętle aby nie wyszła o godzinę za daleko
+                break
+            TCBH = 0
+            a = i
+            while True:  # tworzenie tablicy z intensywnością w poszczególnych godzinach
+                hour = self.__data_frame_int[a][0]
+
+                if hour >= 60 + self.__data_frame_int[i][0]:
+                    break
+
+                TCBH += schedule_call[a]
+                a += 1
+
+            hour_array[self.__data_frame_int[i][0]] = TCBH
+
+        # max value from hour array is busy hour of TCBH
+        busy_hour_traffic = list(list(hour_array.items())[0])[1]
+        busy_hour = 0  # 0 czy 1?, bo hour_array.items())[0])[1] dotyczy 1, ale to znów kwestia interpreteacji przedziału
+        for i in hour_array:  # przeszukanie tablicy z godzinami w celu znalezienia najintensywniejszej
+            if busy_hour_traffic < hour_array[i]:
+                busy_hour_traffic = hour_array[i]
+                busy_hour = i
+
+        return busy_hour, busy_hour_traffic
+```
