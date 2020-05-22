@@ -1,1 +1,1 @@
-# GNR
+# Program do liczenia GNR
