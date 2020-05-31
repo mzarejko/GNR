@@ -23,7 +23,7 @@ class Data:
 
 
     def calculate_traffic_intensity(self):
-        # function for creating distribution of traffic intensity
+        # funkcja do stworzenia przebiegu średniego natężenia ruchu
         av_call_time = float(self.calculate_average_duration(self.__data_frame_time))
         distribution_call = []
         for i in self.__data_frame_int:
@@ -53,14 +53,14 @@ class Data:
 
 
     def calculate_busy_hour(self, schedule_call):
-        # for every min function calculate sum of traffic distribution from 1 h
+        # dla każdej minuty fukcja liczy sumę średnich natężeń ruchu z 1 godziny
         hour_array = {}
         for i in range(self.__data_frame_int.shape[0]):
             if self.__data_frame_int[i][0] + 60 > self.__data_frame_int[-1][0]:  # kończy pętle aby nie wyszła o godzinę za daleko
                 break
             TCBH = 0
             a = i
-            while True:  # tworzenie tablicy z intensywnością w poszczególnych godzinach
+            while True:  # tworzenie tablicy sum średnich natężeń ruchu z 1 godziny
                 hour = self.__data_frame_int[a][0]
 
                 if hour >= 60 + self.__data_frame_int[i][0]:
@@ -71,7 +71,7 @@ class Data:
 
             hour_array[self.__data_frame_int[i][0]] = TCBH
 
-        # max value from hour array is busy hour of TCBH
+        # maksymalna wartość z busy_hour to TCBH
         busy_hour_traffic = list(list(hour_array.items())[0])[1]
         busy_hour = 0  # 0 czy 1?, bo hour_array.items())[0])[1] dotyczy 1, ale to znów kwestia interpreteacji przedziału
         for i in hour_array:  # przeszukanie tablicy z godzinami w celu znalezienia najintensywniejszej
