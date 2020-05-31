@@ -51,7 +51,7 @@ Posiadając wyliczony przebieg rozpoczęto liczenie GNR.
 ```python
 
   def calculate_busy_hour(self, schedule_call):
-        # for every min function calculate sum of traffic distribution from 1 h
+        # dla każdej minuty funkcja liczy sumę średnich natężeń ruchu dla 1 godziny
         hour_array = {}
         for i in range(self.__data_frame_int.shape[0]):
             if self.__data_frame_int[i][0] + 60 > self.__data_frame_int[-1][0]:  # kończy pętle aby nie wyszła o godzinę za daleko
@@ -69,7 +69,7 @@ Posiadając wyliczony przebieg rozpoczęto liczenie GNR.
 
             hour_array[self.__data_frame_int[i][0]] = TCBH
 
-        # max value from hour array is busy hour of TCBH
+        # maksymalna wartość z busy_hour będzie szukaną wartością TCBH
         busy_hour_traffic = list(list(hour_array.items())[0])[1]
         busy_hour = 0  # 0 czy 1?, bo hour_array.items())[0])[1] dotyczy 1, ale to znów kwestia interpreteacji przedziału
         for i in hour_array:  # przeszukanie tablicy z godzinami w celu znalezienia największej wartości
