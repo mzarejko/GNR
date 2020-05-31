@@ -38,7 +38,7 @@ Obiekt klasy Data odczytuje za pomocą obiektu klasy Reader 2 pliki tekstowe "in
   
   ```python
    def calculate_traffic_intensity(self):
-        # function for creating distribution of traffic intensity
+        # fukcja do stworzenia przebiegu średniego natężenia ruchu
         av_call_time = float(self.calculate_average_duration(self.__data_frame_time))
         distribution_call = []
         for i in self.__data_frame_int:
