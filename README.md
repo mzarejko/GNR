@@ -16,7 +16,7 @@ Zadaniem programu jest policzenie średniej wartości natężenia ruchu korzysta
 W pliku Main.py mamy zawarty poniższy kod, który wywołuje konstruktor klasy Data i dokonuje poniższych operacji. 
 
 ```python
-d = Data()
+    d = Data()
     schedule = d.calculate_traffic_intensity()
     busy_hour, busy_hour_traffic = d.calculate_busy_hour(schedule)
     plt = d.create_plot(schedule, busy_hour)
