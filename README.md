@@ -58,7 +58,7 @@ Posiadając wyliczony przebieg rozpoczęto liczenie GNR.
                 break
             TCBH = 0
             a = i
-            while True:  # tworzenie tablicy z intensywnością w poszczególnych godzinach
+            while True:  # tworzenie tablicy z sumą natężen średnich w poszczególnych godzinach
                 hour = self.__data_frame_int[a][0]
 
                 if hour >= 60 + self.__data_frame_int[i][0]:
@@ -72,7 +72,7 @@ Posiadając wyliczony przebieg rozpoczęto liczenie GNR.
         # max value from hour array is busy hour of TCBH
         busy_hour_traffic = list(list(hour_array.items())[0])[1]
         busy_hour = 0  # 0 czy 1?, bo hour_array.items())[0])[1] dotyczy 1, ale to znów kwestia interpreteacji przedziału
-        for i in hour_array:  # przeszukanie tablicy z godzinami w celu znalezienia najintensywniejszej
+        for i in hour_array:  # przeszukanie tablicy z godzinami w celu znalezienia największej wartości
             if busy_hour_traffic < hour_array[i]:
                 busy_hour_traffic = hour_array[i]
                 busy_hour = i
